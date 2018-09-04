@@ -1,0 +1,40 @@
+.ui-datepicker-prev, .ui-datepicker-next {
+    display: none;
+}
+
+.ui-datepicker {
+    width: fit-content !important;
+}
+
+.ui-datepicker td {
+    padding: 5px;
+    text-align: center;
+}
+
+.ui-datepicker td a {
+    text-decoration: none;
+    color: black;
+}
+.ui-datepicker-group {
+    padding: 10px;
+}
+
+.ui-datepicker-unselectable.ui-state-disabled {
+    background: grey;
+}
+
+td.ui-datepicker-week-end {
+    background: yellow;
+}
+
+.ui-datepicker td[class=" "], .ui-datepicker-today {
+    background: green;
+}
+
+.ui-datepicker-current-day {
+    background: orange;
+}
+
+.ui-datepicker-header {
+    text-align: center;
+}
