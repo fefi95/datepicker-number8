@@ -8,6 +8,7 @@
 
 .ui-datepicker td {
     padding: 5px;
+    min-width: 30px;
     text-align: center;
 }
 
@@ -22,7 +23,9 @@
 .ui-datepicker-unselectable.ui-state-disabled {
     background: grey;
 }
-
+.ui-datepicker-unselectable.ui-state-disabled > * {
+    display: none;
+}
 td.ui-datepicker-week-end {
     background: yellow;
 }
@@ -37,4 +40,5 @@ td.ui-datepicker-week-end {
 
 .ui-datepicker-header {
     text-align: center;
+    background: green;
 }
