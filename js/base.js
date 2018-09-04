@@ -1,10 +1,13 @@
 $( function() {
   $( ".datepicker" ).datepicker({
+    showOtherMonths: false,
+    dayNamesMin: [ "S","M","T","W","T","F","S" ], // Column headings for days starting at Sunday
     beforeShow: function()  {
       let minD = $( "#start_date-input" ).datepicker( 'getDate' );
-      let days = $( "#range-input" ).val();
+      let days = $( "#number_days-input" ).val() - 1;
       let maxD = addDays(minD, days);
-      return { minDate: minD, maxDate: maxD }
+      let months = maxD.getMonth() - minD.getMonth() + 1;
+      return { minDate: minD, maxDate: maxD, numberOfMonths: months }
     }
   });
 } );
