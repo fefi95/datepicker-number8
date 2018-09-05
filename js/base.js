@@ -1,3 +1,18 @@
+var holidays = [
+  [1, 15], // Month 1
+  [], // Month 2
+  [], // Month 3
+  [19], // Month 4
+  [], // Month 5
+  [24], // Month 6
+  [5, 24], // Month 7
+  [], // Month 8
+  [], // Month 9
+  [12], // Month 10
+  [], // Month 11
+  [25], // Month 12
+]
+
 $( function() {
 
   // Add afterShow function to the jQuery's datepicker
@@ -13,7 +28,6 @@ $( function() {
   $( ".datepicker" ).datepicker({
     showOtherMonths: false,
     dayNamesMin: [ "S","M","T","W","T","F","S" ],
-    numberOfMonths: 3,
     prevText: "&#8963;",
     nextText: "&#8964;",
     beforeShow: function(input, datepicker)  {
@@ -31,7 +45,21 @@ $( function() {
         days = days - 1;
       }
       let maxD = addDays(minD, days);
-      return { minDate: minD, maxDate: maxD }
+      let months = maxD.getMonth() - minD.getMonth() + 1;
+      return { minDate: minD, maxDate: maxD, numberOfMonths: months }
+    },
+    beforeShowDay: function (date) {
+      // Style holidays
+      var date2 = {
+        month: date.getMonth(),
+        day: date.getDate()
+      }
+      if ( isHoliday( date2 ) ) {
+        return [true, "ui-datepicker-unselectable ui-datepicker-holiday"];
+      }
+      else {
+        return [true, ""];
+      }
     },
     afterShow: function(inst)  {
       // Delete extra rows to the calendar
@@ -57,4 +85,20 @@ $( function() {
 */
 function addDays(date, days) {
   return new Date(date.getTime() + days*24*60*60*1000);
+}
+
+/**
+  Helper method to determine if a given date is a holiday.
+
+  @param date: the date.
+
+  @return true if is a holiday, false otherwise.
+*/
+function isHoliday( date ) {
+  let isHoliday = false;
+  isHoliday = $.inArray( date.day,  holidays[ date.month ] ) === 0
+  if( isHoliday ){
+    return isHoliday;
+  }
+  return false;
 }
