@@ -8,6 +8,16 @@ input {
     border-radius: 0px;
     padding: 10px;
 }
+
+.form {
+    display: flex;
+}
+
+.form-input {
+    padding: 10px;
+    width: 33.33%;
+}
+
 /* DATEPICKER */
 .ui-datepicker-prev, .ui-datepicker-next,
 .ui-datepicker-group:not(.ui-datepicker-group-first) thead {
