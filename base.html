@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Datepicker exercise</title>
+    <!-- CSS -->
+    <!-- <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.css"> -->
+    <link rel="stylesheet" href="css/base.css">
+    <!-- JS SCRIPTS -->
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+    <script src="js/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <script src="js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+  </head>
+
+  <body>
+    <form class="form">
+
+      <div class="form-input">
+        <label for="start_date-input">Start date:</label>
+        <input id="start_date-input" type="text" class="datepicker" name="start_date" value="" placeholder="mm/dd/yyyy">
+      </div>
+
+      <div class="form-input">
+        <label for="number_days-input">Number of days:</label>
+        <input id="number_days-input" type="number" name="number_days" value="" min="1" placeholder="1">
+      </div>
+
+      <div class="form-input">
+        <label for="country_code-input">Country code:</label>
+        <input id="country_code-input" type="text" name="country_code" value="" placeholder="EN" maxlength="4">
+      </div>
+    </form>
+
+    <!-- CUSTOM JS SCRIPTS -->
+    <script type="text/javascript" src="js/base.js"></script>
+  </body>
+</html>
