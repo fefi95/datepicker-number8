@@ -1,12 +1,16 @@
 var holidays = [
-  { month: 1 , day: 1 },
-  { month: 1 , day: 15 },
-  { month: 4, day: 19 },
-  { month: 5, day: 24 },
-  { month: 6, day: 24 },
-  { month: 7, day: 5 },
-  { month: 10, day: 12 },
-  { month: 12, day: 25 },
+  [1, 15], // Month 1
+  [], // Month 2
+  [], // Month 3
+  [19], // Month 4
+  [], // Month 5
+  [24], // Month 6
+  [5, 24], // Month 7
+  [], // Month 8
+  [], // Month 9
+  [12], // Month 10
+  [], // Month 11
+  [25], // Month 12
 ]
 
 $( function() {
@@ -43,16 +47,17 @@ $( function() {
       return { minDate: minD, maxDate: maxD, numberOfMonths: months }
     },
     beforeShowDay: function (date) {
-        var date2 = {
-          month: date.getMonth() + 1,
-          day: date.getDate()
-        }
-        if ( isHoliday( date2 ) ) {
-          return [true, "ui-datepicker-unselectable ui-datepicker-holiday"];
-        }
-        else {
-          return [true, ""];
-        }
+      // Style holidays
+      var date2 = {
+        month: date.getMonth(),
+        day: date.getDate()
+      }
+      if ( isHoliday( date2 ) ) {
+        return [true, "ui-datepicker-unselectable ui-datepicker-holiday"];
+      }
+      else {
+        return [true, ""];
+      }
     },
     afterShow: function(inst)  {
       // Delete extra rows to the calendar
@@ -80,18 +85,18 @@ function addDays(date, days) {
   return new Date(date.getTime() + days*24*60*60*1000);
 }
 
+/**
+  Helper method to determine if a given date is a holiday.
+
+  @param date: the date.
+
+  @return true if is a holiday, false otherwise.
+*/
 function isHoliday( date ) {
   let isHoliday = false;
-  console.log(date);
-  for (var i in holidays) {
-    isHoliday = compareDates(holidays[i], date );
-    console.log(holidays[i]);
-    if( isHoliday ){
-      return isHoliday;
-    }
+  isHoliday = $.inArray( date.day,  holidays[ date.month ] ) === 0
+  if( isHoliday ){
+    return isHoliday;
   }
   return false;
-}
-function compareDates( date1, date2 ) {
-  return date1.month === date2.month && date1.day === date2.day;
 }
